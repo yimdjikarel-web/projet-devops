@@ -1,4 +1,5 @@
-﻿name: Build and Publish Docker Image
+﻿
+name: Build and Deploy Docker Application
 
 on:
   push:
@@ -12,6 +13,7 @@ permissions:
 
 jobs:
   build:
+    name: Build and Publish Docker Image
     runs-on: ubuntu-latest
 
     steps:
@@ -34,3 +36,18 @@ jobs:
           tags: |
             ghcr.io/yimdjikarel-web/projet-devops:latest
             ghcr.io/yimdjikarel-web/projet-devops:${{ github.sha }}
+
+  deploy:
+    name: Deploy on Ubuntu Server
+    needs: build
+    runs-on: [self-hosted, Linux, X64, label-1]
+
+    steps:
+      - name: Recuperer la derniere image Docker
+        run: docker pull ghcr.io/yimdjikarel-web/projet-devops:latest
+
+      - name: Deployer l'application
+        run: |
+          cd /vagrant/app
+          docker compose pull web
+          docker compose up -d --no-build web

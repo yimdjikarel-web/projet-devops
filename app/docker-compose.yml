@@ -1,8 +1,6 @@
-
 services:
   web:
-    build: .
-    image: devops-web-app:1.0
+    image: ghcr.io/yimdjikarel-web/projet-devops:latest
     container_name: devops-app
     ports:
       - "8080:3000"
