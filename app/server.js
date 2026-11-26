@@ -547,7 +547,7 @@ app.get("/", (req, res) => {
         <header class="topbar">
 
             <div>
-                <h1>Tableau de bord DevOps</h1>
+                <h1>Tableau de bord DevOs</h1>
 
                 <p>
                     Vue générale de votre infrastructure DevOps
