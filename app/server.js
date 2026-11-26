@@ -324,7 +324,7 @@ app.get("/", (req, res) => {
 
         <header class="topbar">
             <div>
-                <h1>Tableau de borde</h1>
+                <h1>Tableau de borde....</h1>
                 <p>Vue générale de votre infrastructure DevOps</p>
             </div>
 
@@ -366,151 +366,110 @@ app.get("/", (req, res) => {
             </div>
         </section>
 
-        <h2 class="section-title">Composants de l'infrastructure</h2>
+        
+<h2 class="section-title">Technologies de notre infrastructure</h2>
 
-        <!-- IDENTIFIANT INFRASTRUCTURE -->
-        <section class="services" id="infrastructure">
+<section class="services" id="infrastructure">
 
-            <!-- IDENTIFIANT DOCKER -->
-            <div class="service" id="docker">
-                <div class="service-icon">🐳</div>
-                <h3>Docker</h3>
-                <p>
-                    Conteneurisation de l'application et de ses
-                    différents services.
-                </p>
-                <span class="tag">Conteneurisation</span>
-            </div>
+    <!-- DOCKER -->
+    <article class="service service-docker" id="docker">
 
-            <div class="service">
-                <div class="service-icon">📊</div>
-                <h3>Prometheus</h3>
-                <p>
-                    Collecte et stockage des métriques de
-                    votre application.
-                </p>
-                <span class="tag">Monitoring</span>
-            </div>
+        <div class="service-header">
+            <div class="service-icon docker-icon">🐳</div>
+            <span class="service-badge">Conteneurisation</span>
+        </div>
 
-            <div class="service">
-                <div class="service-icon">📈</div>
-                <h3>Grafana</h3>
-                <p>
-                    Visualisation des données et création
-                    de tableaux de bord.
-                </p>
-                <span class="tag">Visualisation</span>
-            </div>
+        <h2>Docker</h2>
+        <p class="service-subtitle">Plateforme de conteneurisation</p>
 
-            <div class="service">
-                <div class="service-icon">⚙️</div>
-                <h3>Node Exporter</h3>
-                <p>
-                    Collecte des informations relatives
-                    aux ressources du serveur.
-                </p>
-                <span class="tag">Métriques système</span>
-            </div>
+        <p class="service-description">
+            Docker permet de construire, déployer et exécuter
+            notre application dans des conteneurs isolés.
+            Il facilite la gestion des services et garantit
+            un environnement d'exécution cohérent.
+        </p>
 
-            <div class="service">
-                <div class="service-icon">🔍</div>
-                <h3>cAdvisor</h3>
-                <p>
-                    Observation des ressources utilisées
-                    par les conteneurs Docker.
-                </p>
-                <span class="tag">Supervision Docker</span>
-            </div>
+        <div class="service-features">
+            <div>✓ Création des images Docker</div>
+            <div>✓ Exécution des conteneurs</div>
+            <div>✓ Gestion avec Docker Compose</div>
+        </div>
 
-            <div class="service">
-                <div class="service-icon">🚀</div>
-                <h3>GitHub Actions</h3>
-                <p>
-                    Automatisation de la construction et
-                    du déploiement de l'application.
-                </p>
-                <span class="tag">CI / CD</span>
-            </div>
+        <div class="service-footer">
+            <span>Infrastructure applicative</span>
+            <a href="https://docs.docker.com/" target="_blank">
+                Documentation ↗
+            </a>
+        </div>
 
-        </section>
+    </article>
 
-        <footer class="footer">
-            DevOps Monitor © 2026 — Projet de déploiement et supervision
-        </footer>
 
-    </main>
+    <!-- PROMETHEUS -->
+    <article class="service service-prometheus" id="prometheus">
 
-    <script>
-        async function updateDashboard() {
-            try {
-                const healthResponse = await fetch("/health");
-                const health = await healthResponse.json();
+        <div class="service-header">
+            <div class="service-icon prometheus-icon">📊</div>
+            <span class="service-badge">Monitoring</span>
+        </div>
 
-                document.getElementById("status").textContent =
-                    "● Application opérationnelle";
+        <h2>Prometheus</h2>
+        <p class="service-subtitle">Collecte et stockage des métriques</p>
 
-                document.getElementById("app-status").textContent =
-                    health.status;
+        <p class="service-description">
+            Prometheus collecte les données de performance
+            de notre application et de notre infrastructure.
+            Il permet de surveiller les services et de détecter
+            les éventuelles anomalies.
+        </p>
 
-                document.getElementById("version").textContent =
-                    health.version;
+        <div class="service-features">
+            <div>✓ Collecte des métriques HTTP</div>
+            <div>✓ Surveillance des services</div>
+            <div>✓ Analyse avec PromQL</div>
+        </div>
 
-                const metricsResponse = await fetch("/metrics");
-                const metrics = await metricsResponse.text();
+        <div class="service-footer">
+            <span>Collecte des données</span>
+            <a href="http://localhost:9090" target="_blank">
+                Ouvrir Prometheus ↗
+            </a>
+        </div>
 
-                const lines = metrics.split("\\n");
+    </article>
 
-                let total = 0;
 
-                for (const line of lines) {
-                    if (
-                        line.startsWith("http_requests_total") &&
-                        !line.startsWith("#")
-                    ) {
-                        const value = Number(line.trim().split(" ").pop());
+    <!-- GRAFANA -->
+    <article class="service service-grafana" id="grafana">
 
-                        if (Number.isFinite(value)) {
-                            total += value;
-                        }
-                    }
-                }
+        <div class="service-header">
+            <div class="service-icon grafana-icon">📈</div>
+            <span class="service-badge">Visualisation</span>
+        </div>
 
-                document.getElementById("requests").textContent = total;
+        <h2>Grafana</h2>
+        <p class="service-subtitle">Visualisation des performances</p>
 
-            } catch (error) {
-                document.getElementById("status").textContent =
-                    "● Application indisponible";
+        <p class="service-description">
+            Grafana transforme les métriques collectées
+            par Prometheus en graphiques et tableaux de bord.
+            Il facilite l'analyse et le suivi des performances
+            de notre infrastructure.
+        </p>
 
-                document.getElementById("app-status").textContent =
-                    "Hors ligne";
-            }
-        }
+        <div class="service-features">
+            <div>✓ Tableaux de bord interactifs</div>
+            <div>✓ Graphiques et statistiques</div>
+            <div>✓ Suivi des performances</div>
+        </div>
 
-        updateDashboard();
-        setInterval(updateDashboard, 10000);
-    </script>
+        <div class="service-footer">
+            <span>Analyse et visualisation</span>
+            <a href="http://localhost:3001" target="_blank">
+                Ouvrir Grafana ↗
+            </a>
+        </div>
 
-</body>
-</html>
-    `);
-});
+    </article>
 
-// Route de vérification de santé
-app.get("/health", (req, res) => {
-    res.status(200).json({
-        status: "OK",
-        application: "devops-web-app",
-        version: "1.0.0"
-    });
-});
-
-// Route des métriques Prometheus
-app.get("/metrics", async (req, res) => {
-    res.set("Content-Type", client.register.contentType);
-    res.end(await client.register.metrics());
-});
-
-// Démarrage du serveur
-app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Application démarrée sur le port ${PORT}`);
-});
+</section>
