@@ -1,0 +1,423 @@
+
+/* ==========================================
+   1. CONFIGURATION GENERALE
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0b1120;
+    color: #e2e8f0;
+    min-height: 100vh;
+}
+
+/* ==========================================
+   2. BARRE LATERALE
+========================================== */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 245px;
+    height: 100vh;
+    background: #111827;
+    border-right: 1px solid #253047;
+    padding: 30px 20px;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 45px;
+}
+
+.logo span {
+    color: #38bdf8;
+}
+
+.menu-title {
+    color: #64748b;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 25px 0 15px;
+}
+
+.menu-item {
+    display: block;
+    padding: 13px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    color: #94a3b8;
+    font-size: 14px;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.menu-item:hover {
+    background: #1e293b;
+    color: #38bdf8;
+}
+
+.menu-item.active {
+    background: #1e3a5f;
+    color: #38bdf8;
+}
+
+.sidebar-footer {
+    position: absolute;
+    bottom: 25px;
+    color: #64748b;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+/* ==========================================
+   3. CONTENU PRINCIPAL
+========================================== */
+
+.main {
+    margin-left: 245px;
+    padding: 35px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+.topbar h1 {
+    font-size: 25px;
+    color: white;
+}
+
+.topbar p {
+    color: #94a3b8;
+    margin-top: 8px;
+    font-size: 13px;
+}
+
+/* ==========================================
+   4. INDICATEUR DE STATUT
+========================================== */
+
+.status-pill {
+    background: #12372e;
+    color: #4ade80;
+    border: 1px solid #166534;
+    border-radius: 30px;
+    padding: 10px 16px;
+    font-size: 12px;
+}
+
+.status-pill.offline {
+    background: #451a1a;
+    color: #f87171;
+    border-color: #991b1b;
+}
+
+/* ==========================================
+   5. SECTION DE BIENVENUE
+========================================== */
+
+.welcome {
+    background: linear-gradient(115deg, #172d50, #123b50);
+    border: 1px solid #285477;
+    padding: 32px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+}
+
+.welcome small {
+    color: #7dd3fc;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.welcome h2 {
+    font-size: 27px;
+    margin: 14px 0;
+    color: white;
+}
+
+.welcome p {
+    color: #cbd5e1;
+    line-height: 1.7;
+    max-width: 650px;
+    font-size: 14px;
+}
+
+/* ==========================================
+   6. TITRES DES SECTIONS
+========================================== */
+
+.section-title {
+    font-size: 17px;
+    margin-bottom: 18px;
+    color: white;
+}
+
+/* ==========================================
+   7. CARTES DES STATISTIQUES
+========================================== */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 35px;
+}
+
+.card {
+    background: #111c2e;
+    border: 1px solid #253047;
+    border-radius: 13px;
+    padding: 23px;
+    transition: 0.2s;
+}
+
+.card:hover {
+    border-color: #38bdf8;
+    transform: translateY(-3px);
+}
+
+.card-label {
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+.card-value {
+    color: white;
+    font-size: 29px;
+    font-weight: bold;
+    margin: 17px 0 8px;
+}
+
+.card-note {
+    color: #64748b;
+    font-size: 12px;
+}
+
+/* ==========================================
+   8. CARTES DES TECHNOLOGIES
+========================================== */
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.service {
+    background: #111c2e;
+    border: 1px solid #253047;
+    border-radius: 13px;
+    padding: 22px;
+    transition: 0.25s;
+    display: flex;
+    flex-direction: column;
+}
+
+.service:hover {
+    transform: translateY(-4px);
+    border-color: #38bdf8;
+}
+
+/* En-tête des cartes */
+
+.service-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Icônes */
+
+.service-icon {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 28px;
+}
+
+.docker-icon {
+    background: #123b5d;
+}
+
+.prometheus-icon {
+    background: #492b1b;
+}
+
+.grafana-icon {
+    background: #49351b;
+}
+
+/* Badges */
+
+.service-badge {
+    background: #1e293b;
+    color: #7dd3fc;
+    padding: 7px 11px;
+    border-radius: 20px;
+    font-size: 10px;
+}
+
+/* Titres et descriptions */
+
+.service h2 {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.service-subtitle {
+    color: #38bdf8;
+    font-size: 12px;
+    margin-bottom: 14px;
+}
+
+.service-description {
+    color: #94a3b8;
+    font-size: 13px;
+    line-height: 1.7;
+    min-height: 105px;
+}
+
+/* Liste des fonctionnalités */
+
+.service-features {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #253047;
+}
+
+.service-features div {
+    color: #cbd5e1;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+/* Pied des cartes */
+
+.service-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 18px;
+    border-top: 1px solid #253047;
+    font-size: 11px;
+    color: #64748b;
+}
+
+.service-footer a {
+    color: #38bdf8;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.service-footer a:hover {
+    color: white;
+}
+
+/* Couleurs spécifiques */
+
+.service-docker:hover {
+    border-color: #2496ed;
+}
+
+.service-prometheus:hover {
+    border-color: #e6522c;
+}
+
+.service-grafana:hover {
+    border-color: #f2cc0c;
+}
+
+/* ==========================================
+   9. PIED DE PAGE
+========================================== */
+
+.footer {
+    border-top: 1px solid #253047;
+    margin-top: 40px;
+    padding-top: 22px;
+    color: #64748b;
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.8;
+}
+
+/* ==========================================
+   10. RESPONSIVE TABLETTE
+========================================== */
+
+@media (max-width: 1100px) {
+    .services {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .sidebar {
+        display: none;
+    }
+
+    .main {
+        margin-left: 0;
+        padding: 22px;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ==========================================
+   11. RESPONSIVE MOBILE
+========================================== */
+
+@media (max-width: 550px) {
+    .stats,
+    .services {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .welcome {
+        padding: 22px;
+    }
+
+    .welcome h2 {
+        font-size: 22px;
+    }
+
+    .main {
+        padding: 16px;
+    }
+}
